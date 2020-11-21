@@ -4,12 +4,11 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Address {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Integer id;
+
     @Id()
     @Column(name = "id")
     private String cep;
@@ -28,6 +27,19 @@ public class Address {
 //    @JoinColumn(name = "cep" ,insertable = false, updatable = false,nullable = true)
 //    @NotFound(action = NotFoundAction.IGNORE)
 //    private Location location;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(cep, address.cep) && Objects.equals(locationId, address.locationId) && Objects.equals(logradouro, address.logradouro) && Objects.equals(complemento, address.complemento) && Objects.equals(bairro, address.bairro) && Objects.equals(localidade, address.localidade) && Objects.equals(uf, address.uf) && Objects.equals(ibge, address.ibge) && Objects.equals(gia, address.gia) && Objects.equals(ddd, address.ddd) && Objects.equals(siafi, address.siafi);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cep, locationId, logradouro, complemento, bairro, localidade, uf, ibge, gia, ddd, siafi);
+    }
 
     @Override
     public String toString() {
