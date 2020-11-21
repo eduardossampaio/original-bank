@@ -1,4 +1,4 @@
-package com.esampaio.orig.api;
+package com.esampaio.orig.api.config.sqlite;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

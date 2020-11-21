@@ -1,4 +1,4 @@
-package com.esampaio.orig.api;
+package com.esampaio.orig.api.config.sqlite;
 
 import org.hibernate.MappingException;
 import org.hibernate.dialect.identity.IdentityColumnSupport;
@@ -22,8 +22,5 @@ public class SQLiteIdentityColumnSupport extends IdentityColumnSupportImpl {
         return "integer";
     }
 
-//    @Override
-//    public IdentityColumnSupport getIdentityColumnSupport() {
-//        return new SQLiteIdentityColumnSupport();
-//    }
+
 }
