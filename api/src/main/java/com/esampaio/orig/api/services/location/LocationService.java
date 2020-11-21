@@ -6,9 +6,11 @@ import com.esampaio.orig.api.rest.LocationsRequestBody;
 import com.esampaio.orig.api.services.address.AddressService;
 import com.esampaio.orig.api.services.location.data.LocationsDataService;
 import com.esampaio.orig.api.services.thirdparty.viacep.ViaCepService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.sqlite.util.StringUtils;
 
 import java.util.List;
 
@@ -32,12 +34,19 @@ public class LocationService {
 
 
     public void createLocation(@RequestBody LocationsRequestBody request){
+        if(request.getCep() == null || request.getIdentifier() == null){
+            throw new IllegalArgumentException("invalid parameters(you must provide cep and identifier)");
+        }
         Address address = addressService.getAndSave(request.getCep());
         locationsDataService.saveNew(request.getIdentifier(),request.getCep(),address);
     }
 
 
     public void updateLocation(@RequestBody LocationsRequestBody request){
+        if(request.getId() == null || request.getIdentifier() == null){
+            throw new IllegalArgumentException("invalid parameters(you must provide id and identifier)");
+        }
+
         Location locationEntity = locationsDataService.getById(request.getId());
 
         if(request.getIdentifier() != null) {

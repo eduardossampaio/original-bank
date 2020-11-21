@@ -21,7 +21,7 @@ public class LocationRestApi {
     }
 
     @PostMapping("/createLocation")
-    public void createLocation(@RequestBody  LocationsRequestBody location){
+    public void createLocation(@RequestBody  LocationsRequestBody location) throws IllegalArgumentException{
         locationService.createLocation(location);
     }
 
