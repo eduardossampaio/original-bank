@@ -33,7 +33,7 @@ public class LocationService {
 
 
 
-    public void createLocation(@RequestBody LocationsRequestBody request){
+    public void createLocation( LocationsRequestBody request){
         if(request.getCep() == null || request.getIdentifier() == null){
             throw new IllegalArgumentException("invalid parameters(you must provide cep and identifier)");
         }
@@ -42,7 +42,7 @@ public class LocationService {
     }
 
 
-    public void updateLocation(@RequestBody LocationsRequestBody request){
+    public void updateLocation( LocationsRequestBody request){
         if(request.getId() == null || request.getIdentifier() == null){
             throw new IllegalArgumentException("invalid parameters(you must provide id and identifier)");
         }
@@ -61,7 +61,15 @@ public class LocationService {
 
     }
 
-    public void deleteLocation(@RequestBody LocationsRequestBody location){
+    public void deleteLocation( LocationsRequestBody location){
        locationsDataService.delete(location.getId());
     }
+
+    public void deleteLocation( Integer id){
+
+        locationsDataService.delete(id);
+    }
+
+
+
 }

@@ -1,0 +1,24 @@
+<div>
+    <h1>
+       Meus Locais
+    </h1>
+</div>
+<div *ngFor="let location of locations" >
+    <div> {{location.identifier}}</div>
+    <div>{{location.cep}}</div>
+
+    <div>Endereço</div>
+    <div> {{location.address.cep }}</div>
+    <div> {{location.address.logradouro }}</div>
+    <div> {{location.address.complemento }}</div>
+    <div> {{location.address.bairro }}</div>
+    <div> {{location.address.localidade }}</div>
+    <div> {{location.address.uf }}</div>
+    <div> {{location.address.ibge }}</div>
+    <div> {{location.address.gia }}</div>
+    <div> {{location.address.ddd }}</div>
+    <div> {{location.address.siafi }}</div>
+
+    <div><button (click)="onExcludeClick(location)">Excluir</button></div>
+</div>
+<router-outlet></router-outlet>

@@ -15,7 +15,7 @@ public class LocationRestApi {
     @Autowired
     LocationService locationService;
 
-    @GetMapping("/listLocations")
+    @GetMapping("/location")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "lista de todas as localizações registradas"),
             @ApiResponse(code = 500, message = "Um erro desconhecido ocorreu"),
@@ -24,7 +24,7 @@ public class LocationRestApi {
         return locationService.listLocations();
     }
 
-    @PostMapping("/createLocation")
+    @PostMapping("/location")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ok se conseguiu criar a localidade com sucesso"),
             @ApiResponse(code = 500, message = "Um erro desconhecido ocorreu"),
@@ -34,7 +34,7 @@ public class LocationRestApi {
         return defaultSuccessResponse("Location Successful created");
     }
 
-    @PutMapping("/updateLocation")
+    @PutMapping("/location")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ok se conseguiu atualizar a localidade com sucesso"),
             @ApiResponse(code = 500, message = "Um erro desconhecido ocorreu"),
@@ -44,13 +44,13 @@ public class LocationRestApi {
         return defaultSuccessResponse("Location Successful updated");
     }
 
-    @DeleteMapping("/deleteLocation")
+    @DeleteMapping("/location/{id}")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ok se conseguiu criar a deletar com sucesso"),
             @ApiResponse(code = 500, message = "Um erro desconhecido ocorreu"),
     })
-    public DefaultSuccessResponse deleteLocation(@RequestBody LocationsRequestBody location){
-        locationService.deleteLocation(location);
+    public DefaultSuccessResponse deleteLocation(@PathVariable Integer id){
+        locationService.deleteLocation(id);
         return defaultSuccessResponse("Location Successful deleted");
     }
 
