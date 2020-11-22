@@ -15,7 +15,7 @@ public class LocationsRequestBody {
     }
 
     public String getCep() {
-        return cep;
+        return cep.replaceAll("-", "");
     }
 
     public void setCep(String cep) {

@@ -8,7 +8,7 @@
     <div>
 
             <input placeholder="apelido" [value]="apelido" type="text" class="form-control"  #apelidoInput   (keyup)="setApelido(apelidoInput.value)">
-            <input placeholder="CEP" [value]="cep" type="text" class="form-control"  #cepInput   (keyup)="setCep(cepInput.value)">
+            <input placeholder="CEP" mask="00000-000" [value]="cep" type="text" class="form-control"  #cepInput   (keyup)="setCep(cepInput.value)">
 
             <div><button (click)="saveNew()">Cadastrar</button></div>
 
@@ -16,11 +16,11 @@
 
 </div>
 <div *ngFor="let location of locations" >
-    <div> {{location.identifier}}</div>
-    <div>{{location.cep}}</div>
+    <div *ngIf="location.identifier != null" > {{location.identifier}}</div>
+    <div *ngIf="location.cep != null">{{location.cep}}</div>
     <div *ngIf="location.address != null">
         <div >Endereço</div>
-        <div> {{location.address.cep }}</div>
+        <div ><span mask="0000-000"> {{location.address.cep }}</span> </div>
         <div> {{location.address.logradouro }}</div>
         <div> {{location.address.complemento }}</div>
         <div> {{location.address.bairro }}</div>

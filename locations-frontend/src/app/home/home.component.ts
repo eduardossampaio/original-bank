@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   locations=[];
+
   apelido='';
   cep='';
 
@@ -30,8 +31,7 @@ export class HomeComponent implements OnInit {
     console.log("Excluir");
 
     this.apiService.delete(location.id).subscribe((data: any[])=>{
-      //this.listAll();
-      this.locations = [];
+      this.listAll();
     });
   }
 

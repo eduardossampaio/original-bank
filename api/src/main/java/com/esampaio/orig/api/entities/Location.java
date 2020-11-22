@@ -25,8 +25,8 @@ public class Location {
     }
 
     public Location(String identifier,String cep) {
-        this.cep = cep;
-        this.identifier = identifier;
+        this.setCep(cep);
+        this.setIdentifier(identifier);
     }
 
     public Integer getId() {
@@ -38,10 +38,16 @@ public class Location {
     }
 
     public String getCep() {
-        return cep;
+        if(this.cep != null){
+            return this.cep.replaceAll("-", "");
+        }
+        return null;
     }
 
     public void setCep(String cep) {
+        if(cep!= null){
+            this.cep = cep.replaceAll("-", "");
+        }
         this.cep = cep;
     }
 

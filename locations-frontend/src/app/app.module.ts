@@ -10,7 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
