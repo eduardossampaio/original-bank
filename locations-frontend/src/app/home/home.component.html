@@ -21,25 +21,35 @@
 
     </div>
     <div *ngFor="let location of locations">
-        {{location.identifier}}
+        <!-- {{location.identifier}} -->
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{location.identifier}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{location.cep}}</h6>
+
+              <div *ngIf="location.address != null">
+
+                <ul class="list-group">
+                    <li class="list-group-item">{{location.address.cep}}</li>
+                    <li class="list-group-item">{{location.address.logradouro}}</li>
+                    <li class="list-group-item">{{location.address.complemento}}</li>
+                    <li class="list-group-item">{{location.address.bairro}}</li>
+                    <li class="list-group-item">{{location.address.localidade}}</li>
+                    <li class="list-group-item">{{location.address.uf}}</li>
+                    <!-- <li class="list-group-item">{{location.address.ibge}}</li>
+                    <li class="list-group-item">{{location.address.gia}}</li>
+                    <li class="list-group-item">{{location.address.ddd}}</li>
+                    <li class="list-group-item">{{location.address.siafi}}</li> -->
+
+                  </ul>
+
+              </div>
+
+              <div><button class="btn btn-danger" (click)="onExcludeClick(location)">Excluir</button></div>
+            </div>
+        </div>
     </div>
-
-        <!-- <div><button (click)="onExcludeClick(location)">Excluir</button></div> -->
-
-
-        <!-- <table>
-            <thead>
-                <th>Name</th>
-                <th>Index</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let location of locations" >
-                    <td>{{location.identifier}}</td>
-                </tr>
-            </tbody>
-        </table> -->
-
-
 
 </div>
 <router-outlet></router-outlet>
