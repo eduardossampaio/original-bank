@@ -1,37 +1,45 @@
-<div>
-    <h1>
-       Meus Locais
-    </h1>
-</div>
-<div>
-    <h2> Novo local</h2>
+<div class="container">
     <div>
+        <h1>
+            Meus Locais
+        </h1>
+    </div>
+    <div>
+        <h2> Novo local</h2>
+        <div>
+            <div class="form-group">
+                <label for="apelido">Apelido</label>
+                <input id="apelido" placeholder="apelido" [value]="apelido" type="text" class="form-control" #apelidoInput (keyup)="setApelido(apelidoInput.value)">
+            </div>
+            <div class="form-group">
+                <label for="cep">Apelido</label>
+                <input id="cep" placeholder="CEP" mask="00000-000" [value]="cep" type="text" class="form-control" #cepInput (keyup)="setCep(cepInput.value)">
+            </div>
+            <div><button class="btn btn-primary" (click)="saveNew()">Cadastrar</button></div>
 
-            <input placeholder="apelido" [value]="apelido" type="text" class="form-control"  #apelidoInput   (keyup)="setApelido(apelidoInput.value)">
-            <input placeholder="CEP" mask="00000-000" [value]="cep" type="text" class="form-control"  #cepInput   (keyup)="setCep(cepInput.value)">
-
-            <div><button (click)="saveNew()">Cadastrar</button></div>
+        </div>
 
     </div>
-
-</div>
-<div *ngFor="let location of locations" >
-    <div *ngIf="location.identifier != null" > {{location.identifier}}</div>
-    <div *ngIf="location.cep != null">{{location.cep}}</div>
-    <div *ngIf="location.address != null">
-        <div >Endereço</div>
-        <div ><span mask="0000-000"> {{location.address.cep }}</span> </div>
-        <div> {{location.address.logradouro }}</div>
-        <div> {{location.address.complemento }}</div>
-        <div> {{location.address.bairro }}</div>
-        <div> {{location.address.localidade }}</div>
-        <div> {{location.address.uf }}</div>
-        <div> {{location.address.ibge }}</div>
-        <div> {{location.address.gia }}</div>
-        <div> {{location.address.ddd }}</div>
-        <div> {{location.address.siafi }}</div>
+    <div *ngFor="let location of locations">
+        {{location.identifier}}
     </div>
 
-    <div><button (click)="onExcludeClick(location)">Excluir</button></div>
+        <!-- <div><button (click)="onExcludeClick(location)">Excluir</button></div> -->
+
+
+        <!-- <table>
+            <thead>
+                <th>Name</th>
+                <th>Index</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let location of locations" >
+                    <td>{{location.identifier}}</td>
+                </tr>
+            </tbody>
+        </table> -->
+
+
+
 </div>
 <router-outlet></router-outlet>
