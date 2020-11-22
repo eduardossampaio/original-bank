@@ -3,21 +3,34 @@
        Meus Locais
     </h1>
 </div>
+<div>
+    <h2> Novo local</h2>
+    <div>
+
+            <input placeholder="apelido" [value]="apelido" type="text" class="form-control"  #apelidoInput   (keyup)="setApelido(apelidoInput.value)">
+            <input placeholder="CEP" [value]="cep" type="text" class="form-control"  #cepInput   (keyup)="setCep(cepInput.value)">
+
+            <div><button (click)="saveNew()">Cadastrar</button></div>
+
+    </div>
+
+</div>
 <div *ngFor="let location of locations" >
     <div> {{location.identifier}}</div>
     <div>{{location.cep}}</div>
-
-    <div>Endereço</div>
-    <div> {{location.address.cep }}</div>
-    <div> {{location.address.logradouro }}</div>
-    <div> {{location.address.complemento }}</div>
-    <div> {{location.address.bairro }}</div>
-    <div> {{location.address.localidade }}</div>
-    <div> {{location.address.uf }}</div>
-    <div> {{location.address.ibge }}</div>
-    <div> {{location.address.gia }}</div>
-    <div> {{location.address.ddd }}</div>
-    <div> {{location.address.siafi }}</div>
+    <div *ngIf="location.address != null">
+        <div >Endereço</div>
+        <div> {{location.address.cep }}</div>
+        <div> {{location.address.logradouro }}</div>
+        <div> {{location.address.complemento }}</div>
+        <div> {{location.address.bairro }}</div>
+        <div> {{location.address.localidade }}</div>
+        <div> {{location.address.uf }}</div>
+        <div> {{location.address.ibge }}</div>
+        <div> {{location.address.gia }}</div>
+        <div> {{location.address.ddd }}</div>
+        <div> {{location.address.siafi }}</div>
+    </div>
 
     <div><button (click)="onExcludeClick(location)">Excluir</button></div>
 </div>

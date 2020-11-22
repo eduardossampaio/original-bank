@@ -19,7 +19,10 @@ public class ViaCepResponse {
     }
 
     public String getCep() {
-        return cep;
+        if(cep != null){
+            return cep.replaceAll("-","");
+        }
+        return null;
     }
 
     public void setCep(String cep) {

@@ -29,10 +29,15 @@ export class ApiService {
 		return this.httpClient.get(this.SERVER_URL+'/location').pipe(catchError(this.handleError));
   }
 
+  public post(apelido:string, cep:string){
+		return this.httpClient.post(this.SERVER_URL+'/location', {
+      identifier : apelido,
+      cep : cep
+    }).pipe(catchError(this.handleError));
+  }
+
   public delete(id: number){
     return this.httpClient.delete(this.SERVER_URL+'/location/'+id).pipe(catchError(this.handleError));
-
-
 	}
 
 }

@@ -47,10 +47,16 @@ public class Address {
     }
 
     public String getCep() {
-        return cep;
+        if(this.cep != null){
+            return this.cep.replaceAll("[^\\d.]", "");
+        }
+        return null;
     }
 
     public void setCep(String cep) {
+        if(cep!= null){
+            this.cep = cep.replaceAll("[^\\d.]", "");
+        }
         this.cep = cep;
     }
 
